@@ -1,1 +1,22 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+.btn{
+    background-color: #2B7FFF;
+    padding: 10px;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-2{
+    background-color: rgb(16, 128, 16);
+}
+
+.input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 90%;
+}
