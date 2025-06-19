@@ -1,50 +1,53 @@
 import MainNavigation from "./components/MainNavigation";
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
-import Home from "./Pages/Home"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import MyTasks from "./Pages/MyTasks";
 import AddTask from "./Pages/Addtask";
 import EditTask from "./Pages/EditTask";
 import Dashboard from "./Pages/Dashboard";
-
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<MainNavigation />,
-    children:[
+    path: "/",
+    element: <MainNavigation />,
+    children: [
       {
-        path:"/",
-        element:<Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/myTasks",
-        element:<MyTasks />
+        path: "/login",
+        element: <Login />,
       },
       {
-        path:"/addTask",
-        element:<AddTask />
+        element: <PrivateRoute />,
+        children: [
+          {
+            path: "/myTasks",
+            element: <MyTasks />,
+          },
+          {
+            path: "/addTask",
+            element: <AddTask />,
+          },
+          {
+            path: "/task/editTask",
+            element: <EditTask />,
+          },
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+        ],
       },
-      {
-        path:"/task/editTask",
-        element:<EditTask />
-      },
-      {
-        path:"/login",
-        element:<Login />
-      },
-      {
-        path:"/dashboard",
-        element:<Dashboard />
-      }
-    ]
-  }
-])
+    ],
+  },
+]);
 
 const App = () => {
-  return (
-   <RouterProvider router={router}></RouterProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;
