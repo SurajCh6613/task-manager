@@ -3,7 +3,7 @@ import React from 'react'
 const EditTask = () => {
   return (
     <div>
-      <div className="container p-4">
+      <div className="w-full p-4">
         <form action="" className="p-8 shadow-md rounded-md">
           <h2 className='text-4xl mb-4'>Edit Task</h2>
           <div className='flex mb-4'>

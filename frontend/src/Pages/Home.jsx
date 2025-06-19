@@ -5,7 +5,7 @@ import homeImage from "../assets/homeImage.jpg";
 const Home = () => {
   return (
     <>
-      <div className="container pt-8 flex gap-2">
+      <div className="w-full pt-8 flex gap-2">
         {/* Left Side */}
         <div className="w-2/3 p-3 h-[100%]">
           <h1 className="text-4xl font-bold text-gray-800 mb-8">

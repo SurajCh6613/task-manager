@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .btn{
     background-color: #2B7FFF;
     padding: 10px;
