@@ -3,6 +3,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const generateToken = require("./generateToken");
 
+const getUser = async (req, res) => {
+  const user = await User.findById(req.user.id).select("-password");
+  res.json(user);
+};
+
 const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -90,4 +95,4 @@ const editUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser, editUser };
+module.exports = { getUser, registerUser, loginUser, logoutUser, editUser };
