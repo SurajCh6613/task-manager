@@ -5,9 +5,9 @@ import homeImage from "../assets/homeImage.jpg";
 const Home = () => {
   return (
     <>
-      <div className="w-full pt-8 flex gap-2">
+      <div className="w-full pt-8 flex md:flex-col-reverse lg:flex-row  gap-2">
         {/* Left Side */}
-        <div className="w-2/3 p-3 h-[100%]">
+        <div className="lg:w-2/3 md:w-full w-full p-3 h-[100%]">
           <h1 className="text-4xl font-bold text-gray-800 mb-8">
             Welcome to TaskMaster!
           </h1>
@@ -30,8 +30,8 @@ const Home = () => {
           </div>
         </div>
         {/* Right Side */}
-        <div className="p-3 w-1/3 h-[100%]">
-          <img src={homeImage} alt="Home Image" className="h-[20rem] w-full" />
+        <div className="p-3 w-full flex items-center justify-center md:w-full lg:w-1/3 h-[100%]">
+          <img src={homeImage} alt="Home Image" className="h-[20rem] w-[20rem]" />
         </div>
       </div>
     </>
