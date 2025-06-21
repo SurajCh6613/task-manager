@@ -19,7 +19,7 @@ const Navbar = () => {
               Home
             </li>
           </Link>
-          <Link to="/MyTasks">
+          <Link to="/allTasks">
             <li className="hover:scale-105 duration-300 hover:text-blue-500">
               My Task
             </li>
