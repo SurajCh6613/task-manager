@@ -1,22 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuth } from "../context/authContext";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { user, setUser, loading, setLoading } = useAuth();
 
   const handleOnChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const endpoint = isLogin ? "login" : "register";
     try {
       const res = await axios({
@@ -25,24 +29,38 @@ const Login = () => {
         data: formData,
         withCredentials: true,
       });
-      console.log(`${isLogin ? "Login" : "Register"} Successful`, res.data);
-      navigate("/dashboard")
+
+      const userRes = await axios.get(`http://localhost:3000/user/me`, {
+        withCredentials: true,
+      });
+      setUser(userRes.data);
+      navigate("/dashboard");
     } catch (error) {
-      console.log(
-        `${isLogin ? "Login" : "Register"} Error`,
-        error.response?.data || error
-      );
+      setLoading(false);
+      setError(error.response?.data.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setFormData({ name: "", email: "", password: "" });
   };
+
+
+ /* The `useEffect` hook in the provided code snippet is used to perform side effects in function
+ components. In this specific case: */
+  useEffect(() => {
+    if (user && !loading) {
+      navigate("/dashboard");
+    }
+  }, [user]);
   return (
     <>
       <section className="h-full w-full flex justify-center items-center p-8">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleLogin}
           className="bg-gray-100 w-1/3 text-center rounded-md shadow-lg flex flex-col space-y-6 py-8 justify-center items-center"
         >
           <h2 className="text-2xl font-semibold">
@@ -79,15 +97,20 @@ const Login = () => {
               onChange={handleOnChange}
             />
           </div>
-          <button className="btn">{isLogin ? "Login" : "Register"}</button>
+          <button type="submit" className="btn" disabled={loading}>
+            {loading ? "Processing..." : isLogin ? "Login" : "Register"}
+          </button>
           <div>
+            <div>{error && <p className="mb-4 text-red-500">{error}</p>}</div>
             <p>
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-              <Link>
-                <button onClick={toggleForm} className="text-blue-500">
-                  {isLogin ? "Register" : "Login"}
-                </button>
-              </Link>{" "}
+              <button
+                type="button"
+                onClick={toggleForm}
+                className="text-blue-500 cursor-pointer"
+              >
+                {isLogin ? "Register" : "Login"}
+              </button>
             </p>
           </div>
         </form>
