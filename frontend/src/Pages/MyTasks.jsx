@@ -8,7 +8,7 @@ import { useAuth } from "../context/authContext";
 const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
   const { loading, setLoading } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -26,6 +26,16 @@ const MyTasks = () => {
     fetchTask();
   }, []);
 
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/task/${id}`, {
+        withCredentials: true,
+      });
+      setTasks((prev) => prev.filter((task) => task._id !== id));
+    } catch (error) {
+      console.log("Error delete task", error);
+    }
+  };
   return (
     <div className="w-full p-4">
       <div className="p-8 shadow-md rounded-md">
@@ -52,7 +62,7 @@ const MyTasks = () => {
                   <Link to={`/task/editTask/${task._id}`}>
                     Edit <FaEdit className="inline h-6 w-6 text-gray-500" />
                   </Link>
-                  <button>
+                  <button onClick={() => deleteTask(task._id)}>
                     Delete{" "}
                     <MdDelete className="inline w-6 h-6 hover:scale-110 duration-200 text-red-500" />
                   </button>

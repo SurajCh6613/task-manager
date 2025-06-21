@@ -81,4 +81,26 @@ const editTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, addTask, editTask, getTask };
+const deleteTask = async (req, res) => {
+  try {
+    const {id}  = req.params
+    const task = await Task.findById(id);
+    if (!task) {
+      return res.status(400).json({ message: "No task Found" });
+    }
+    if (task.createdBy.toString() !== req.user.id) {
+      return res.status(400).json("Unauthorized to delete");
+    }
+    await task.deleteOne();
+
+    await User.findByIdAndUpdate(req.user.id, {
+      $pull: { tasks: id },
+    });
+
+    res.status(200).json({ message: "Task deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Delete Task Error", error });
+  }
+};
+
+module.exports = { getAllTasks, addTask, editTask, getTask, deleteTask };
