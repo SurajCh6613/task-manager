@@ -1,7 +1,8 @@
 const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const generateToken = require("./generateToken");
+const generateToken = require("../middlewares/generateToken");
+
 
 const getUser = async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
