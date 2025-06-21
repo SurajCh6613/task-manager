@@ -35,6 +35,8 @@ const registerUser = async (req, res) => {
     // Setting token
     const token = generateToken(newUser._id);
 
+    // Setting cookie
+    res.cookie("token", token);
     return res.status(201).json({
       message: "User registered successfully",
       user: newUser,
@@ -71,8 +73,7 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-  res.clearCookie("token");
-  res.status(200).json({ message: "Logged out successfully" });
+  res.clearCookie("token").status(200).json({ message: "Logged out" });
 };
 
 const editUser = async (req, res) => {
