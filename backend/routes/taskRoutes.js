@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("/:id", auth, getTask);
+router.get("/getTask/:id", auth, getTask);
 router.get("/allTasks", auth, getAllTasks);
 router.post("/addTask", auth, addTask);
 router.put("/editTask/:id", auth, editTask);
