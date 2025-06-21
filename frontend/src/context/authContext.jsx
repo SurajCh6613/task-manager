@@ -5,6 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // null: not fetched yet, false: not logged in
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -12,26 +13,22 @@ export const AuthProvider = ({ children }) => {
         const res = await axios.get(`http://localhost:3000/user/me`, {
           withCredentials: true,
         });
-
         setUser(res.data);
       } catch (error) {
-        setUser(false); // false means unauthenticated
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, loading, setLoading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);
