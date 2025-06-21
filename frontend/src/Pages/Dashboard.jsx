@@ -1,37 +1,20 @@
 import axios from "axios";
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import Logout from "../components/Logout";
 
 const Dashboard = () => {
-    const navigate = useNavigate()
-  const handleLogout = async () => {
-    try {
-     const res =  await axios({
-        method: "post",
-        url: `http://localhost:3000/user/logout`,
-        withCredentials: true,
-      });
-      console.log("logout successfully",res.data);
-      navigate("/")
-    } catch (error) {
-        console.log("Logout",error);
-        
-    }
-  };
+  const { user } = useAuth();
   return (
     <div className="w-full p-8">
       <div className="p-8 rounded-md shadow-md flex justify-between">
         <div>
-          <h3 className="text-3xl font-semibold mb-4">Welcome, Suraj</h3>
+          <h3 className="text-3xl font-semibold mb-4">Welcome, {user.name}</h3>
+          <p className="mb-4 text-gray-500">Email: {user.email}</p>
           <button className="btn mb-4">Edit Profile</button>
         </div>
         <div>
-          <button
-            onClick={handleLogout}
-            className="p-2 rounded-md text-white font-bold bg-red-500"
-          >
-            Logout
-          </button>
+          <Logout />
         </div>
       </div>
     </div>
