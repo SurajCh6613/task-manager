@@ -33,7 +33,7 @@ const MyTasks = () => {
   return (
     <div>
       <div className="w-full p-4">
-        <div action="" className="p-8 shadow-md rounded-md">
+        <div className="p-8 shadow-md rounded-md">
           {tasks.length === 0 ? (
             <p className="text-3xl text-gray-500 text-center">No Tasks Found</p>
           ) : (
