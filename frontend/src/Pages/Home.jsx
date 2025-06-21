@@ -22,7 +22,7 @@ const Home = () => {
                 Add Task
               </button>
             </Link>
-            <Link to="/MyTasks">
+            <Link to="/allTasks">
               <button className="btn btn-2">
                 View Task
               </button>
