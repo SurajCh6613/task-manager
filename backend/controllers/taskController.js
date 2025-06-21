@@ -14,14 +14,24 @@ const getTask = async (req, res) => {
 };
 
 const getAllTasks = async (req, res) => {
-  const allTasks = await Task.find({ createdBy: req.user.id });
-  return res.json(allTasks);
+  try {
+    const allTasks = await Task.find({ createdBy: req.user.id });
+
+    if (!allTasks || allTasks.length === 0) {
+      return res.status(404).json({ message: "No tasks found" });
+    }
+
+    return res.status(200).json(allTasks);
+  } catch (error) {
+    return res.status(500).json({ message: "Failed to fetch tasks", error });
+  }
 };
 
 const addTask = async (req, res) => {
   try {
     const { title, description, date } = req.body;
     const userId = req.user.id;
+
     //   Creating Task
     const task = await Task.create({
       title,
