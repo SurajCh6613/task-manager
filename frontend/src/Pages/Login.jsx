@@ -49,8 +49,7 @@ const Login = () => {
     setFormData({ name: "", email: "", password: "" });
   };
 
-
- /* The `useEffect` hook in the provided code snippet is used to perform side effects in function
+  /* The `useEffect` hook in the provided code snippet is used to perform side effects in function
  components. In this specific case: */
   useEffect(() => {
     if (user && !loading) {
@@ -77,6 +76,7 @@ const Login = () => {
                 className="input"
                 onChange={handleOnChange}
                 autoComplete="full-name"
+                value={formData.name}
               />
             </div>
           )}
@@ -88,6 +88,7 @@ const Login = () => {
               placeholder="example@gmail.com"
               className="input"
               onChange={handleOnChange}
+              value={formData.email}
             />
           </div>
           <div className="flex">
@@ -98,6 +99,7 @@ const Login = () => {
               className="input"
               onChange={handleOnChange}
               autoComplete="password"
+              value={formData.password}
             />
           </div>
           <button type="submit" className="btn" disabled={loading}>
