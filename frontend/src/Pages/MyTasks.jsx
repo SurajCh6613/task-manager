@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/authContext";
+import BACKEND_API from "../../config";
 
 const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -13,7 +14,7 @@ const MyTasks = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const taskRes = await axios.get(`http://localhost:3000/task/allTasks`, {
+        const taskRes = await axios.get(`${BACKEND_API}/task/allTasks`, {
           withCredentials: true,
         });
         setTasks(taskRes.data);
@@ -28,7 +29,7 @@ const MyTasks = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/task/${id}`, {
+      await axios.delete(`${BACKEND_API}/task/${id}`, {
         withCredentials: true,
       });
       setTasks((prev) => prev.filter((task) => task._id !== id));

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BACKEND_API from "../../config";
 
 const EditTask = () => {
   const id = useParams().id;
@@ -21,7 +22,7 @@ const EditTask = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/task/getTask/${id}`,
+          `${BACKEND_API}/task/getTask/${id}`,
           { withCredentials: true }
         );
         setFormData({
@@ -40,7 +41,7 @@ const EditTask = () => {
   //  Function to handle form submit to update task
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3000/task/editTask/${id}`, formData, {
+    await axios.put(`${BACKEND_API}/task/editTask/${id}`, formData, {
       withCredentials: true,
     });
     navigate("/allTasks")

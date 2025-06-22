@@ -3,6 +3,7 @@ import "../index.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/authContext";
+import BACKEND_API from "../../config";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -25,12 +26,12 @@ const Login = () => {
     try {
       const res = await axios({
         method: "post",
-        url: `http://localhost:3000/user/${endpoint}`,
+        url: `${BACKEND_API}/user/${endpoint}`,
         data: formData,
         withCredentials: true,
       });
 
-      const userRes = await axios.get(`http://localhost:3000/user/me`, {
+      const userRes = await axios.get(`${BACKEND_API}/user/me`, {
         withCredentials: true,
       });
       setUser(userRes.data);

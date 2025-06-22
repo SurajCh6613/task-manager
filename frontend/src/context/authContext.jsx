@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import BACKEND_API from "../../config";
 
 const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/user/me`, {
+        const res = await axios.get(`${BACKEND_API}/user/me`, {
           withCredentials: true,
         });
         setUser(res.data);

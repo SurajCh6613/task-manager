@@ -2,6 +2,7 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BACKEND_API from "../../config";
 
 const UpdateProfile = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const UpdateProfile = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:3000/user/edit/${user._id}`,
+        `${BACKEND_API}/user/edit/${user._id}`,
         formData,
         {
           withCredentials: true,
@@ -44,9 +45,6 @@ const UpdateProfile = () => {
       setLoading(false);
     }
   };
-
-  if (loading) return <div>Loading...</div>;
-  if (loading || !user) return <div>Loading...</div>;
 
   return (
     <div className="w-full p-8">

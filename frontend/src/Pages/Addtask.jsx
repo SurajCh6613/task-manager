@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BACKEND_API from "../../config";
 
 const AddTask = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const AddTask = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:3000/task/addTask`, formData, {
+    await axios.post(`${BACKEND_API}/task/addTask`, formData, {
       withCredentials: true,
     });
     navigate("/allTasks");

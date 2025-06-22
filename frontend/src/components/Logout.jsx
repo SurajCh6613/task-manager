@@ -1,18 +1,19 @@
 import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import BACKEND_API from "../../config";
 
 const Logout = () => {
   const { setUser, setLoading } = useAuth();
   const navigate = useNavigate();
 
-/**
- * The `handleLogout` function logs out the user by making a GET request to the server, updating the
- * user state, and redirecting to the home page.
- */
+  /**
+   * The `handleLogout` function logs out the user by making a GET request to the server, updating the
+   * user state, and redirecting to the home page.
+   */
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:3000/user/logout", {
+      await axios.get(`${BACKEND_API}/user/logout`, {
         withCredentials: true,
       });
       setTimeout(() => {
