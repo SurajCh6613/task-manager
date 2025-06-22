@@ -77,8 +77,6 @@ const logoutUser = (req, res) => {
 };
 
 const editUser = async (req, res) => {
-  console.log(req.user);
-
   try {
     const { name, email } = req.body;
     if (!name || !email)
