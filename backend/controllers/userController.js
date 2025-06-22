@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const generateToken = require("../middlewares/generateToken");
 
-
 const getUser = async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   res.json(user);
@@ -78,20 +77,25 @@ const logoutUser = (req, res) => {
 };
 
 const editUser = async (req, res) => {
+  console.log(req.user);
+
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password)
+    const { name, email } = req.body;
+    if (!name || !email)
       return res.status(400).json({ message: "All fields required" });
-    if (await User.findOne({ email })) {
+    const user = await User.findOne({ email });
+    if (user && user.email !== email) {
       return res.status(400).json({ message: `${email} is already present` });
     }
-    const hashedPawword = await bcrypt.hash(password, 10);
     const updatedUser = await User.findByIdAndUpdate(
       { _id: req.params.id },
-      { name, email, password: hashedPawword }
+      { name, email },
+      { new: true }
     );
     updatedUser.save();
-    return res.status(201).json({ message: "Profile updated successfully" });
+    return res
+      .status(201)
+      .json({ message: "Profile updated successfully", user: updatedUser });
   } catch (error) {
     console.log(error);
   }
