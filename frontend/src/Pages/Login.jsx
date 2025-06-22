@@ -75,6 +75,7 @@ const Login = () => {
                 placeholder="Fullname"
                 className="input"
                 onChange={handleOnChange}
+                autoComplete="full-name"
               />
             </div>
           )}
@@ -95,6 +96,7 @@ const Login = () => {
               name="password"
               className="input"
               onChange={handleOnChange}
+              autoComplete="password"
             />
           </div>
           <button type="submit" className="btn" disabled={loading}>
