@@ -36,7 +36,11 @@ const registerUser = async (req, res) => {
     const token = generateToken(newUser._id);
 
     // Setting cookie
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Lax",
+    });
     return res.status(201).json({
       message: "User registered successfully",
       user: newUser,
@@ -64,7 +68,11 @@ const loginUser = async (req, res) => {
   }
   const token = generateToken(user._id);
   //   Set token in cookie
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "Lax",
+  });
   return res.status(201).json({
     message: "User Logged-In successfully",
     user,
@@ -73,7 +81,14 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-  res.clearCookie("token").status(200).json({ message: "Logged out" });
+  res
+    .clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Lax",
+    })
+    .status(200)
+    .json({ message: "Logged out" });
 };
 
 const editUser = async (req, res) => {
