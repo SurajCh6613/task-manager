@@ -38,8 +38,9 @@ const registerUser = async (req, res) => {
     // Setting cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true, // MUST be true in production with HTTPS
+      sameSite: "None", // Allow cross-origin cookies
+      maxAge: 1000 * 60 * 60 * 24,
     });
     return res.status(201).json({
       message: "User registered successfully",
@@ -70,8 +71,9 @@ const loginUser = async (req, res) => {
   //   Set token in cookie
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Lax",
+    secure: true, // MUST be true in production with HTTPS
+    sameSite: "None", // Allow cross-origin cookies
+    maxAge: 1000 * 60 * 60 * 24,
   });
   return res.status(201).json({
     message: "User Logged-In successfully",
@@ -84,8 +86,9 @@ const logoutUser = (req, res) => {
   res
     .clearCookie("token", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true, // MUST be true in production with HTTPS
+      sameSite: "None", // Allow cross-origin cookies
+      maxAge: 1000 * 60 * 60 * 24,
     })
     .status(200)
     .json({ message: "Logged out" });
