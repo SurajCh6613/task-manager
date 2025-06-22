@@ -7,6 +7,7 @@ import AddTask from "./Pages/Addtask";
 import EditTask from "./Pages/EditTask";
 import Dashboard from "./Pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import UpdateProfile from "./Pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: "/task/editTask/:id",
             element: <EditTask />,
+          },
+          {
+            path: "/user/edit/:id",
+            element: <UpdateProfile />,
           },
           {
             path: "/dashboard",
