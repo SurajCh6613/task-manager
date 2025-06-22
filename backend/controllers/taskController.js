@@ -83,7 +83,7 @@ const editTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   try {
-    const {id}  = req.params
+    const { id } = req.params;
     const task = await Task.findById(id);
     if (!task) {
       return res.status(400).json({ message: "No task Found" });
