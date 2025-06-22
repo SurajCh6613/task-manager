@@ -48,7 +48,7 @@ const EditTask = () => {
   };
   return (
     <div>
-      <div className="w-full p-4">
+      <div className="w-full px-4 pt-12 md:pt-16">
         <form onSubmit={handleSubmit} className="p-8 shadow-md rounded-md">
           <h2 className="text-4xl mb-4">Edit Task</h2>
           <div className="flex mb-4">

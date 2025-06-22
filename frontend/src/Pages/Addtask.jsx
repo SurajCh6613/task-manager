@@ -24,7 +24,7 @@ const AddTask = () => {
   };
   return (
     <div>
-      <div className="w-full h-full p-4">
+      <div className="w-full pt-12 md:pt-16 h-full p-4">
         <form onSubmit={handleSubmit} className="p-8 shadow-md rounded-md">
           <h2 className="text-4xl mb-4">Add Task</h2>
           <div className="flex mb-4">

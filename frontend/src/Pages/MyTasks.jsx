@@ -39,7 +39,7 @@ const MyTasks = () => {
   };
   return (
     <div className="w-full p-4">
-      <div className="p-8 shadow-md rounded-md">
+      <div className="p-4 pt-16 md:pt-20 shadow-md rounded-md">
         {loading ? (
           <p className="text-center text-gray-500 text-xl">Loading...</p>
         ) : tasks.length === 0 ? (
@@ -49,7 +49,7 @@ const MyTasks = () => {
             {tasks.map((task, index) => (
               <li
                 key={task._id}
-                className="p-4 rounded hover:scale-105 duration-300 shadow-md"
+                className="p-4 rounded hover:scale-102 duration-300 shadow-md"
               >
                 <h3 className="text-lg font-semibold">{task.title}</h3>
                 <p className="text-sm text-gray-600">{task.description}</p>
@@ -63,7 +63,10 @@ const MyTasks = () => {
                   <Link to={`/task/editTask/${task._id}`}>
                     Edit <FaEdit className="inline h-6 w-6 text-gray-500" />
                   </Link>
-                  <button onClick={() => deleteTask(task._id)}>
+                  <button
+                    onClick={() => deleteTask(task._id)}
+                    className="cursor-pointer"
+                  >
                     Delete{" "}
                     <MdDelete className="inline w-6 h-6 hover:scale-110 duration-200 text-red-500" />
                   </button>
@@ -72,6 +75,10 @@ const MyTasks = () => {
             ))}
           </ul>
         )}
+        <button className="btn mt-4" onClick={() => navigate("/AddTask")}>
+          {" "}
+          {tasks.length === 0 ? "Add Task" : "Add More Task"}
+        </button>
       </div>
     </div>
   );

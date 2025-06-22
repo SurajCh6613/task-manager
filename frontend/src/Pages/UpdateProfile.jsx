@@ -47,7 +47,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8 pt-12 md:pt-20">
       <div className="p-8 rounded-md shadow-md flex justify-between">
         <div>
           <h3 className="text-3xl font-semibold mb-4">Update Profile</h3>

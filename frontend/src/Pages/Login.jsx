@@ -62,12 +62,12 @@ const Login = () => {
   }, [user]);
   return (
     <>
-      <section className="h-full w-full flex justify-center items-center p-8">
+      <section className="h-full w-full flex justify-center items-center p-8 pt-20">
         <form
           onSubmit={handleLogin}
-          className="bg-gray-100 w-1/3 text-center rounded-md shadow-lg flex flex-col space-y-6 py-8 justify-center items-center"
+          className="bg-gray-100 w-[24rem] h-[27rem] text-center rounded-md shadow-lg flex flex-col space-y-2 justify-center items-center"
         >
-          <h2 className="text-2xl font-semibold">
+          <h2 className="text-2xl font-semibold mb-8">
             {isLogin ? "Login" : "Register"}
           </h2>
           {!isLogin && (

@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import homeImage from "../assets/homeImage.jpg";
+import homeImage from "../assets/homeImage.png";
 
 const Home = () => {
   return (
     <>
-      <div className="w-full pt-8 flex md:flex-col-reverse lg:flex-row  gap-2">
+      <div className="w-full pt-8 md:pt-24 lg:pt-34 flex flex-col-reverse md:flex-row  lg:flex-row  gap-2">
         {/* Left Side */}
-        <div className="lg:w-2/3 md:w-full w-full p-3 h-[100%]">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8">
+        <div className="lg:w-2/3  w-full p-3 h-[100%]">
+          <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold text-gray-800 mb-4 md:mb-8">
             Welcome to TaskMaster!
           </h1>
-          <p className="text-2xl pr-4 text-gray-700 mb-8">
+          <p className="md:text-2xl text-xl pr-4 text-gray-700 mb-4 md:mb-8">
             Stay organized and boost your productivity with our simple and
             intuitive To-Do App. Manage your tasks efficiently, set priorities,
             and never miss a deadline again.
@@ -30,7 +30,7 @@ const Home = () => {
           </div>
         </div>
         {/* Right Side */}
-        <div className="p-3 w-full flex items-center justify-center md:w-full lg:w-1/3 h-[100%]">
+        <div className="p-3 w-full flex items-center justify-center lg:w-1/3 h-full">
           <img src={homeImage} alt="Home Image" className="h-[20rem] w-[20rem]" />
         </div>
       </div>
