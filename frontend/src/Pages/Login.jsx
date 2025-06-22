@@ -22,6 +22,10 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (!formData.email || !formData.password || (!isLogin && !formData.name)) {
+      setError("All fields are required");
+      return;
+    }
     const endpoint = isLogin ? "login" : "register";
     try {
       const res = await axios({
