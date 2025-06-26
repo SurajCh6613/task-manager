@@ -66,15 +66,15 @@ JWT_SECRET=your_jwt_secret
 Coming Soon...
 
 ## 🤝 Contributing
-Fork the repo
+1. Fork the repo
 
-Create your feature branch: git checkout -b feature/YourFeature
+2. Create your feature branch: git checkout -b feature/YourFeature
 
-Commit your changes: git commit -m 'Add some feature'
+3. Commit your changes: git commit -m 'Add some feature'
 
-Push to the branch: git push origin feature/YourFeature
+4. Push to the branch: git push origin feature/YourFeature
 
-Open a pull request
+5. Open a pull request
 
 ## 📄 License
 This project is licensed under the MIT License.
