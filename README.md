@@ -34,12 +34,12 @@ task-manager/
 │   │   └── App.jsx
 └── README.md
 ```
-##🛠️ Installation
+## 🛠️ Installation
  Prerequisites
    => Node.js and npm installed
    => MongoDB Atlas URI
 
-Backend Setup
+## Backend Setup
 ```bash
 cd backend
 npm install
@@ -49,23 +49,23 @@ npm install
 npm run server
 ```
 
-#Frontend Setup
+## Frontend Setup
 ```bash
 cd frontend
 npm install
 npm start
 ```
-#🔒 Environment Variables
+## 🔒 Environment Variables
 Create a .env file in the backend directory:
 ```bash
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ```
-#📸 Screenshots
+## 📸 Screenshots
 <!-- Add screenshots here -->
 Coming Soon...
 
-#🤝 Contributing
+## 🤝 Contributing
 Fork the repo
 
 Create your feature branch: git checkout -b feature/YourFeature
@@ -76,8 +76,8 @@ Push to the branch: git push origin feature/YourFeature
 
 Open a pull request
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License.
 
-#🙋‍♂️ Author
+## 🙋‍♂️ Author
 Suraj Chaudhary – @SurajCh6613
