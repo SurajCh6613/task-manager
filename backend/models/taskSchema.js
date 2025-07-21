@@ -17,6 +17,10 @@ const taskSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
+  reminderSent: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Task", taskSchema);

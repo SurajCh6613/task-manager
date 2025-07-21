@@ -30,17 +30,18 @@ const getAllTasks = async (req, res) => {
 const addTask = async (req, res) => {
   try {
     const { title, description, date } = req.body;
-    const userId = req.user.id;
+    const user = await User.findById(req.user.id);
 
+    if (!user) return res.status(400).json({ message: "User not found" });
     //   Creating Task
     const task = await Task.create({
       title,
       description,
-      date,
-      createdBy: userId,
+      date: new Date(date),
+      createdBy: user._id,
     });
     //   Adding task to user
-    await User.findByIdAndUpdate(userId, {
+    await User.findByIdAndUpdate(user._id, {
       $push: { tasks: task._id },
     });
     res.status(201).json(task);

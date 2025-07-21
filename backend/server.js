@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const userRoutes = require("./routes/userRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const ConnectDB = require("./config/ConnectDB");
+require("./jobs/taskReminder");
 
 ConnectDB(); // DB Connection
 app.use(
