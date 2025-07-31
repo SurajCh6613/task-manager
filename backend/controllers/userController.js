@@ -97,18 +97,25 @@ const logoutUser = (req, res) => {
 const editUser = async (req, res) => {
   try {
     const { name, email } = req.body;
-    if (!name || !email)
-      return res.status(400).json({ message: "All fields required" });
-    const user = await User.findOne({ email });
-    if (user && user.email !== email) {
-      return res.status(400).json({ message: `${email} is already present` });
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
+
+    // Check if email is being changed and already exists
+    if (user.email !== email) {
+      const existEmail = await User.findOne({ email });
+      if (existEmail) {
+        return res.status(400).json({ message: `${email} is already in use` });
+      }
+    }
+
     const updatedUser = await User.findByIdAndUpdate(
-      { _id: req.params.id },
-      { name, email },
+      req.user.id,
+      { name: name || user.name, email: email || user.email },
       { new: true }
     );
-    updatedUser.save();
     return res
       .status(201)
       .json({ message: "Profile updated successfully", user: updatedUser });
