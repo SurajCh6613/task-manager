@@ -8,6 +8,8 @@ import EditTask from "./Pages/EditTask";
 import Dashboard from "./Pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateProfile from "./Pages/UpdateProfile";
+import About from "./Pages/About";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +25,12 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+      {
         element: <PrivateRoute />,
         children: [
-          {
-            path: "/allTasks",
-            element: <MyTasks />,
-          },
           {
             path: "/addTask",
             element: <AddTask />,
@@ -52,7 +54,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <>
+      <RouterProvider router={router}></RouterProvider>;
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
+  );
 };
 
 export default App;

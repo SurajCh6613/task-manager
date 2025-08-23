@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import BACKEND_API from "../../config";
+import toast from "react-hot-toast";
 
 const AddTask = () => {
   const [formData, setFormData] = useState({
@@ -17,10 +18,15 @@ const AddTask = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${BACKEND_API}/task/addTask`, formData, {
-      withCredentials: true,
-    });
-    navigate("/allTasks");
+    try {
+      await axios.post(`${BACKEND_API}/task/addTask`, formData, {
+        withCredentials: true,
+      });
+      toast.success("Task Created Successfully.");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error || "Something went wrong!");
+    }
   };
   return (
     <div>

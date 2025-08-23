@@ -2,6 +2,7 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import BACKEND_API from "../../config";
+import toast from "react-hot-toast";
 
 const Logout = () => {
   const { setUser, setLoading } = useAuth();
@@ -19,9 +20,10 @@ const Logout = () => {
       setTimeout(() => {
         setUser(false);
       }, 50);
+      toast.success("Logged out successfully.");
       navigate("/");
     } catch (error) {
-      console.log("Logout error", error);
+      toast.error(error || "Something went wrong!");
     } finally {
       setLoading(false);
     }

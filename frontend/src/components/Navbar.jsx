@@ -18,32 +18,18 @@ const Navbar = () => {
           Home
         </li>
       </Link>
-      <Link to="/allTasks">
-        <li
-          className="hover:scale-105 duration-300 hover:text-blue-500"
-          onClick={() => setIsOpen(false)}
-        >
-          My Task
-        </li>
-      </Link>
 
-      <Link to="/AddTask">
-        <li
-          className="hover:scale-105 duration-300 hover:text-blue-500"
-          onClick={() => setIsOpen(false)}
-        >
-          Add Task
-        </li>
-      </Link>
       {user && (
-        <Link to="/dashboard">
-          <li
-            className="hover:scale-105 duration-300 hover:text-blue-500"
-            onClick={() => setIsOpen(false)}
-          >
-            Dashboard
-          </li>
-        </Link>
+        <>
+          <Link to="/dashboard">
+            <li
+              className="hover:scale-105 duration-300 hover:text-blue-500"
+              onClick={() => setIsOpen(false)}
+            >
+              Dashboard
+            </li>
+          </Link>
+        </>
       )}
       <li
         className="hover:scale-105 duration-300 hover:text-blue-500 pt-0"
@@ -54,19 +40,15 @@ const Navbar = () => {
     </>
   );
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <>
-      <div className="w-full flex justify-between px-6 py-3  shadow-md fixed bg-white">
+      <div className="w-full flex justify-between px-6 py-3 shadow-md fixed bg-gray-300 z-1000">
         <Link to="/">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold hover:scale-105 duration-300 hover:text-blue-500">
-            Task Master
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold hover:scale-105 duration-300 hover:text-indigo-600">
+            Task Manager
           </h1>
         </Link>
-        <ul className="flex space-x-8 pt-2 text-xl hidden lg:flex">
+        <ul className="md:flex font-semibold space-x-8 pt-2 text-xl hidden lg:flex">
           {navItems}
         </ul>
 

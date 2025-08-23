@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import Logout from "../components/Logout";
 import { useEffect } from "react";
+import MyTasks from "./MyTasks";
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   return (
     <div className="w-full p-8 pt-20">
-      <div className="p-8 rounded-md shadow-md flex justify-between">
+      <div className="p-8 shadow-md flex justify-between">
         <div>
           <h3 className="lg:text-3xl md:text-2xl text-xl font-semibold mb-4">Welcome, {user.name}</h3>
           <p className="mb-4 text-gray-500">Email: {user.email}</p>
@@ -20,6 +21,9 @@ const Dashboard = () => {
         <div>
           <Logout />
         </div>
+      </div>
+      <div className="bg-gray-100 min-h-51">
+        <MyTasks />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import BACKEND_API from "../../config";
+import toast from "react-hot-toast";
 
 const EditTask = () => {
   const id = useParams().id;
@@ -21,10 +22,9 @@ const EditTask = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `${BACKEND_API}/task/getTask/${id}`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`${BACKEND_API}/task/getTask/${id}`, {
+          withCredentials: true,
+        });
         setFormData({
           title: res.data.title,
           description: res.data.description,
@@ -40,11 +40,16 @@ const EditTask = () => {
 
   //  Function to handle form submit to update task
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await axios.put(`${BACKEND_API}/task/editTask/${id}`, formData, {
-      withCredentials: true,
-    });
-    navigate("/allTasks")
+    try {
+      e.preventDefault();
+      await axios.put(`${BACKEND_API}/task/editTask/${id}`, formData, {
+        withCredentials: true,
+      });
+      toast.success("Task Updated Successfully.");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error || "Something went wrong!");
+    }
   };
   return (
     <div>
