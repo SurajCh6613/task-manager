@@ -2,7 +2,6 @@ import MainNavigation from "./components/MainNavigation";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import MyTasks from "./Pages/MyTasks";
 import AddTask from "./Pages/Addtask";
 import EditTask from "./Pages/EditTask";
 import Dashboard from "./Pages/Dashboard";

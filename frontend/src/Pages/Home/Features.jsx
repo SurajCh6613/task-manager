@@ -3,10 +3,10 @@ import { CheckCircle, Bell, Edit3, Trash2, PlusCircle } from "lucide-react";
 const Features = () => {
   return (
     <section className="flex flex-col justify-center items-center bg-gray-100 py-8 px-3">
-      <h1 className="text-4xl font-semibold mb-12">
+      <h1 className="text-2xl md:text-4xl font-semibold mb-12">
         Features That Help You Stay Organized
       </h1>
-      <div className="grid md:grid-cols-2 max-w-4xl gap-8 mx-auto">
+      <div className="grid md:grid-cols-2 max-w-6xl gap-8 mx-auto">
         <div className="p-6 bg-white rounded-2xl shadow-lg text-center">
           <PlusCircle className="mx-auto w-12 h-12 text-indigo-600 mb-4" />
           <h3 className="text-xl font-semibold mb-2">Create Task</h3>
