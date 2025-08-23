@@ -62,9 +62,9 @@ const Login = () => {
   }, [user]);
   return (
     <>
-      <section className="h-full w-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex justify-center items-center p-8 pt-20">
-        <div className="bg-white p-6 rounded-md shadow-md">
-          <h1 className="text-2xl font-semibold mb-8">
+      <section className="min-h-screen w-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex justify-center items-center p-8 pt-16">
+        <div className="bg-white py-12 px-6 rounded-md shadow-md">
+          <h1 className="text-2xl md:text-3xl font-semibold mb-8">
             Welcome to Task Manager
           </h1>
           <form className="space-y-4" onSubmit={handleLogin}>
@@ -111,7 +111,7 @@ const Login = () => {
             <button type="submit" className="btn w-full" disabled={loading}>
               {loading ? "Processing..." : isLogin ? "Login" : "Register"}
             </button>
-            <div className="text-center">
+            <div className="text-center text-xl">
               <p>
                 {isLogin
                   ? "Don't have an account?"

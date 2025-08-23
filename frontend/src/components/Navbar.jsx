@@ -48,7 +48,7 @@ const Navbar = () => {
             Task Manager
           </h1>
         </Link>
-        <ul className="md:flex font-semibold space-x-8 pt-2 text-xl hidden lg:flex">
+        <ul className="md:flex font-semibold space-x-12 pt-2 text-xl hidden lg:flex">
           {navItems}
         </ul>
 

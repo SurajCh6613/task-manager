@@ -34,7 +34,7 @@ const AddTask = () => {
         <form onSubmit={handleSubmit} className="p-8 shadow-md rounded-md">
           <h2 className="text-4xl mb-4">Add Task</h2>
           <div className="flex mb-4">
-            <label htmlFor="" className="py-3 w-34">
+            <label htmlFor="" className="py-3 w-34 text-xl">
               Task Title
             </label>
             <input
@@ -46,7 +46,7 @@ const AddTask = () => {
             />
           </div>
           <div className="flex  mb-4">
-            <label htmlFor="" className="py-3 w-34">
+            <label htmlFor="" className="py-3 w-34 text-xl">
               Task Description
             </label>
             <textarea
@@ -59,7 +59,7 @@ const AddTask = () => {
             />
           </div>
           <div className="flex mb-4">
-            <label htmlFor="" className="py-3 w-34">
+            <label htmlFor="" className="py-3 w-34 text-xl">
               Task Date
             </label>
             <input
@@ -70,7 +70,7 @@ const AddTask = () => {
               placeholder="Task Title"
             />
           </div>
-          <button type="submit" className="btn text-center">
+          <button type="submit" className="btn text-center text-2xl">
             Add Task
           </button>
         </form>

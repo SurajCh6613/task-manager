@@ -41,7 +41,7 @@ const MyTasks = () => {
   return (
     <div className="w-full p-4">
       <div className="flex items-center justify-between py-2">
-        <h2 className="text-2xl font-semibold">My Task</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold">My Task</h2>
         <button className="btn flex gap-1" onClick={() => navigate("/AddTask")}>
           {" "}
          <PlusCircle/> {tasks.length === 0 ? "Add Task" : "Add More Task"}

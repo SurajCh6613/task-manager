@@ -56,7 +56,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router}></RouterProvider>;
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false}  />
     </>
   );
 };

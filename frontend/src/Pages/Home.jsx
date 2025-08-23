@@ -5,11 +5,11 @@ import CTA from "./Home/CTA";
 
 const Home = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <Hero />
       <Features />
       <CTA />
-    </>
+    </div>
   );
 };
 
