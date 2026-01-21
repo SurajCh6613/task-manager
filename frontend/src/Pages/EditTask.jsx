@@ -53,11 +53,11 @@ const EditTask = () => {
   };
   return (
     <div>
-      <div className="w-full px-4 pt-12 md:pt-16">
+      <div className="w-full py-12 md:section-padding">
         <form onSubmit={handleSubmit} className="p-8 shadow-md rounded-md">
           <h2 className="text-4xl mb-4">Edit Task</h2>
-          <div className="flex mb-4">
-            <label htmlFor="" className="py-3 w-34 text-xl">
+          <div className="flex flex-col mb-4">
+            <label htmlFor="" className="text-xl">
               Task Title
             </label>
             <input
@@ -69,8 +69,8 @@ const EditTask = () => {
               placeholder="Task Title"
             />
           </div>
-          <div className="flex  mb-4">
-            <label htmlFor="" className="py-3 w-34 text-xl">
+          <div className="flex flex-col  mb-4">
+            <label htmlFor="" className="text-xl">
               Task Description
             </label>
             <textarea
@@ -79,12 +79,12 @@ const EditTask = () => {
               className="input"
               placeholder="Task Title"
               onChange={handleOnChange}
-              rows="5"
+              rows="3"
               value={formData.description}
             />
           </div>
-          <div className="flex mb-4">
-            <label htmlFor="" className="py-3 w-34 text-xl">
+          <div className="flex flex-col mb-4">
+            <label htmlFor="" className="text-xl">
               Task Date
             </label>
             <input

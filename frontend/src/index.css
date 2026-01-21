@@ -21,15 +21,17 @@ body {
 }
 
 
+.section-padding{
+    @apply px-6 pt-16;
+}
+
 
 .input {
     border: 1px solid #ccc;
     padding: 8px 12px;
     border-radius: 4px;
     outline: none;
-    border-radius: 5px;
-    width: 90%;
-    margin: 5px;
+    border-radius: 5px;   
 }
 
 .input:focus {

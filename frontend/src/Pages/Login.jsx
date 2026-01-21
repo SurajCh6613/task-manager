@@ -21,12 +21,12 @@ const Login = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
     if (!formData.email || !formData.password || (!isLogin && !formData.name)) {
       toast.error("All fields are required");
       return;
     }
     const endpoint = isLogin ? "login" : "register";
+    setLoading(true);
     try {
       const res = await axios({
         method: "post",
@@ -53,8 +53,7 @@ const Login = () => {
     setFormData({ name: "", email: "", password: "" });
   };
 
-  /* The `useEffect` hook in the provided code snippet is used to perform side effects in function
- components. In this specific case: */
+
   useEffect(() => {
     if (user && !loading) {
       navigate("/dashboard");
@@ -62,15 +61,15 @@ const Login = () => {
   }, [user]);
   return (
     <>
-      <section className="min-h-screen w-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex justify-center items-center p-8 pt-16">
-        <div className="bg-white py-12 px-6 rounded-md shadow-md">
-          <h1 className="text-2xl md:text-3xl font-semibold mb-8">
+      <section className="min-h-screen w-full bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex justify-center items-center p-4 md:p-8 pt-16">
+        <div className="bg-white py-6 md:py-12 px-3 md:px-6 rounded-md shadow-md">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-8">
             Welcome to Task Manager
           </h1>
           <form className="space-y-4" onSubmit={handleLogin}>
             {!isLogin && (
-              <div className="">
-                <label className="py-3">Name</label>
+              <div className="flex flex-col">
+                <label className="py-1">Name</label>
                 <input
                   type="text"
                   name="name"
@@ -83,8 +82,8 @@ const Login = () => {
                 />
               </div>
             )}
-            <div>
-              <label className="py-3">Email</label>
+            <div className="flex flex-col">
+              <label className="py-1">Email</label>
               <input
                 type="email"
                 name="email"
@@ -95,8 +94,8 @@ const Login = () => {
                 required
               />
             </div>
-            <div>
-              <label className=" py-3">Password</label>
+            <div className="flex flex-col">
+              <label className=" py-1">Password</label>
               <input
                 type="password"
                 name="password"
@@ -111,7 +110,7 @@ const Login = () => {
             <button type="submit" className="btn w-full" disabled={loading}>
               {loading ? "Processing..." : isLogin ? "Login" : "Register"}
             </button>
-            <div className="text-center text-xl">
+            <div className="text-center md:text-xl">
               <p>
                 {isLogin
                   ? "Don't have an account?"

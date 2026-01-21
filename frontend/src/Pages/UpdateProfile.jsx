@@ -33,7 +33,7 @@ const UpdateProfile = () => {
         formData,
         {
           withCredentials: true,
-        }
+        },
       );
 
       setUser(res.data.user);
@@ -47,13 +47,13 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div className="w-full p-8 pt-12 md:pt-20">
+    <div className="w-full section-padding">
       <div className="p-8 rounded-md shadow-md flex justify-between">
         <div>
           <h3 className="text-3xl font-semibold mb-4">Update Profile</h3>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div className="flex gap-3">
-              <label className="pt-3 w-20">Name</label>
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <div className="flex flex-col">
+              <label>Name</label>
               <input
                 type="text"
                 name="name"
@@ -62,8 +62,8 @@ const UpdateProfile = () => {
                 onChange={handleOnChange}
               />
             </div>
-            <div className="flex gap-3">
-              <label className="pt-3 w-20">Email</label>
+            <div className="flex flex-col">
+              <label>Email</label>
               <input
                 type="email"
                 name="email"
@@ -72,7 +72,7 @@ const UpdateProfile = () => {
                 onChange={handleOnChange}
               />
             </div>
-            <button type="submit" className="btn mb-4">
+            <button type="submit" className="btn my-4">
               {loading ? "Processing..." : "Update"}
             </button>
           </form>

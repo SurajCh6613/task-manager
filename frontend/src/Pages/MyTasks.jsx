@@ -41,19 +41,26 @@ const MyTasks = () => {
   return (
     <div className="w-full p-4">
       <div className="flex items-center justify-between py-2">
-        <h2 className="text-2xl md:text-3xl font-semibold">My Task</h2>
-        <button className="btn flex gap-1" onClick={() => navigate("/AddTask")}>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+          My Task
+        </h2>
+        <button
+          className="btn text-xs flex items-center gap-1"
+          onClick={() => navigate("/AddTask")}
+        >
           {" "}
-         <PlusCircle/> {tasks.length === 0 ? "Add Task" : "Add More Task"}
+          <PlusCircle /> {tasks.length === 0 ? "Add Task" : "Add More Task"}
         </button>
       </div>
-      <div className="p-4 rounded-md">
+      <div className="md:p-4 rounded-md">
         {loading ? (
           <p className="text-center text-gray-500 text-xl">Loading...</p>
         ) : tasks.length === 0 ? (
-          <p className="text-3xl text-gray-500 text-center">No Tasks Found</p>
+          <p className="md:text-3xl text-gray-500 text-center">
+            No Tasks Found
+          </p>
         ) : (
-          <ul className="grid gap-3">
+          <ul className="grid md:grid-cols-2 gap-3">
             {tasks.map((task, index) => (
               <li
                 key={task._id}
@@ -71,15 +78,12 @@ const MyTasks = () => {
                     </p>
                   </div>
                   <div className="space-x-4">
-                    <Link to={`/task/editTask/${task._id}`}>
-                      Edit <FaEdit className="inline h-6 w-6 text-gray-500" />
-                    </Link>
+                    <Link to={`/task/editTask/${task._id}`} className="hover:text-green-500">Edit</Link>
                     <button
                       onClick={() => deleteTask(task._id)}
-                      className="cursor-pointer"
+                      className="cursor-pointer text-red-500 hover:text-red-600"
                     >
-                      Delete{" "}
-                      <MdDelete className="inline w-6 h-6 hover:scale-110 duration-200 text-red-500" />
+                      Delete
                     </button>
                   </div>
                 </div>

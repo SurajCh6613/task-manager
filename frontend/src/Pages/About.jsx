@@ -5,14 +5,14 @@ const About = () => {
     <div className="min-h-screen bg-gray-50 text-gray-800 pt-16">
       {/* Header */}
       <header className="bg-indigo-600 text-white py-6 px-6 shadow-md">
-        <h1 className="text-3xl font-bold">About Task Manager</h1>
+        <h1 className="text-2xl md:text-3xl font-bold">About Task Manager</h1>
       </header>
 
       {/* Content */}
-      <main className="max-w-4xl mx-auto py-12 px-6 space-y-10">
+      <main className="max-w-4xl mx-auto py-12 px-3 md:px-6 space-y-10">
         {/* Intro */}
         <section className="text-center">
-          <h2 className="text-4xl font-bold text-indigo-600 mb-4">
+          <h2 className=" text-xl sm:text-2xl md:text-3xl font-bold text-indigo-600 mb-4">
             Simple. Powerful. Reliable.
           </h2>
           <p className="text-lg text-gray-600">
